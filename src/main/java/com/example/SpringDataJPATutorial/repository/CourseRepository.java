@@ -49,7 +49,10 @@ public class CourseRepository {
 
         course1.setName("arnob - updated");
         //entityManager.flush();
+    }
 
+    public void addReviewforCourse() {
+        Course course = findById(101L);
 
     }
 

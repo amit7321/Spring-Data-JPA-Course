@@ -1,50 +1,59 @@
 package com.example.SpringDataJPATutorial.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
-@Entity
+import java.time.LocalDateTime;
+
+
+
 public class Review {
     @Id
     @GeneratedValue
     private Long id;
+
     private String rating;
-    @Column(nullable = false)
     private String description;
+    @ManyToOne
+    private Course course;
 
-    public Review(String description) {
-        this.description = description;
-    }
-
-    protected Review() {
-    }
-    public String getDescription() {
-        return description;
-    }
-    public void setDescription(String description) {
-        this.description = description;
-    }
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
+
     public String getRating() {
         return rating;
     }
+
     public void setRating(String rating) {
         this.rating = rating;
     }
 
-    @Override
-    public String toString() {
-        return "Review{" +
-                "id=" + id +
-                ", rating='" + rating + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public Review(Long id, String rating, String description, Course course) {
+        this.id = id;
+        this.rating = rating;
+        this.description = description;
+        this.course = course;
     }
 }

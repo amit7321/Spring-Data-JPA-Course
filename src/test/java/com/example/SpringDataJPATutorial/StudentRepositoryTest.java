@@ -5,6 +5,7 @@ import com.example.SpringDataJPATutorial.entity.Student;
 import com.example.SpringDataJPATutorial.repository.StudentRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +24,7 @@ public class StudentRepositoryTest {
 	StudentRepository studentRepository;
 
 	@Test
+	@Transactional
 	public void findById_basic() {
 		Student student = entityManager.find(Student.class, 1);
 		logger.info("Student -> {}", student);
